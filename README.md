@@ -1,2 +1,4 @@
-# narra-lemmatizer
-Narra Generator using Morphodita lemmatizer to generate most frequent keywords
+![grape logo](narra.png)
+
+NARRA Keywords Generator
+========================
