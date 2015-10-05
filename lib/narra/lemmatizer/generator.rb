@@ -20,19 +20,18 @@
 #
 
 require 'narra/spi'
+require 'narra/tools'
 
 require 'narra/lemmatizer/options'
 
 require 'narra/lemmatizer/extensions/hpoint'
 require 'narra/lemmatizer/extensions/morphodita'
 require 'narra/lemmatizer/extensions/parser'
-require 'narra/lemmatizer/extensions/settings'
 
 module Narra
   module Lemmatizer
     class Generator < Narra::SPI::Generator
 
-      include Narra::Lemmatizer::Extensions::Settings
       include Narra::Lemmatizer::Extensions::Morphodita
       include Narra::Lemmatizer::Extensions::Parser
       include Narra::Lemmatizer::Extensions::Hpoint
@@ -50,6 +49,14 @@ module Narra
         result = fields.select { |field| !Narra::Extensions::Meta.get_meta(item_to_check, name: field).nil? }
         # check if it is empty
         !result.empty?
+      end
+
+      def initialization
+        # initialization of the default settings
+        Narra::Tools::Settings.defaults[:morphodita_analyzer_binary] = '/opt/morphodita/src/run_morpho_analyze'
+        Narra::Tools::Settings.defaults[:morphodita_analyzer_params] = '--from_tagger --input=untokenized --convert_tagset=strip_lemma_comment --output=xml'
+        Narra::Tools::Settings.defaults[:morphodita_cs_model] = '/opt/czech-morfflex-pdt-131112/czech-morfflex-pdt-131112-pos_only.tagger'
+        Narra::Tools::Settings.defaults[:morphodita_en_model] = '/opt/english-morphium-wsj-140407/english-morphium-wsj-140407.tagger'
       end
 
       def generate(options = {})
