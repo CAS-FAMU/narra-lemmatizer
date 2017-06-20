@@ -37,6 +37,10 @@ require 'narra/lemmatizer'
 # in narra-core spec/support/ and its subdirectories.
 Dir[Gem.loaded_specs['narra-core'].gem_dir + '/spec/support/**/*.rb'].each { |f| require f }
 
+# Requires factories,
+# in narra-core spec/factories/ and its subdirectories.
+Dir[Gem.loaded_specs['narra-core'].gem_dir + '/spec/factories/**/*.rb'].each { |f| require f }
+
 RSpec.configure do |config|
   # If true, the base class of anonymous controllers will be inferred
   # automatically. This will be the default behavior in future versions of
