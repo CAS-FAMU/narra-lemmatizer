@@ -55,7 +55,7 @@ module Narra
         # initialization of the default settings
         Narra::Tools::Settings.defaults[:morphodita_analyzer_binary] = '/opt/morphodita/src/run_morpho_analyze'
         Narra::Tools::Settings.defaults[:morphodita_analyzer_params] = '--from_tagger --input=untokenized --convert_tagset=strip_lemma_comment --output=xml'
-        Narra::Tools::Settings.defaults[:morphodita_cs_model] = '/opt/czech-morfflex-pdt-131112/czech-morfflex-pdt-131112-pos_only.tagger'
+        Narra::Tools::Settings.defaults[:morphodita_cs_model] = '/opt/czech-morfflex-pdt-161115/czech-morfflex-pdt-161115-pos_only.tagger'
         Narra::Tools::Settings.defaults[:morphodita_en_model] = '/opt/english-morphium-wsj-140407/english-morphium-wsj-140407.tagger'
       end
 
